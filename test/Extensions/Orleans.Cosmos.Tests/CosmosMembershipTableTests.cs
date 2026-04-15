@@ -62,7 +62,9 @@ public class CosmosMembershipTableTests : MembershipTableTestsBase
 
     protected override Task<string> GetConnectionString()
     {
-        return Task.FromResult(TestDefaultConfiguration.CosmosDBAccountKey);
+        // Return a dummy connection string for the InMemoryEmulator.
+        // The base class skips tests if this is null/empty.
+        return Task.FromResult("InMemoryEmulator");
     }
 
     [SkippableFact, TestCategory("Functional")]
